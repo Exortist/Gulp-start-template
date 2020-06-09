@@ -1,0 +1,21 @@
+extends ../layout/layout
+
+block header
+block content
+  +field-text({
+    label: {
+      title: 'Текстовое поле',
+      class: 'field-text__some-class',
+      id: 'id1',
+    },
+    isTextarea: false,
+    input: {
+      value: 'Текст',
+      type: 'text',
+    },
+    helpText: {
+      title: 'Подсказка',
+      mods: 'mod1',
+    }
+  })
+block footer

@@ -1,0 +1,58 @@
+//- Все примеси в этом файле должны начинаться c имени блока (field-text)
+
+mixin field-text(props)
+
+  //- Принимает:
+    props {
+      label: {
+        title: '
+      },
+
+  //-   props {
+  //-     label: ''
+  //-     isTextarea: false {bool}   - флаг input/textarea
+  //-     helpText: ''      {string} - пояснение под полем
+  //-     mods: ''          {string} - модификаторы блока
+  //-     val: ''           {string} - текст в поле
+  //-     attrs:            {object} - любые атрибуты для input/textarea
+  //-       type:           {string}
+  //-       placeholder:    {string}
+  //- Вызов:
+        +field-text({
+            label: {
+              title: 'Текстовое поле',              {string} - текст с названием (выводится над полем)
+              class: 'field-text__some-class',      {string} - классы тега label
+              id: 'id1',                            {string} - id тега label
+            },
+            isTextarea: false,                      {bool}   - флаг input/textarea
+            input: {
+              value: 'Текст',                       {string} - Введённый текст
+              type: 'text',                         {string} - тип поля
+            },
+            helpText: {
+              title: 'Подсказка',                   {string} - Текст под полем
+              mods: 'mod1',                         {string} - модификаторы
+            }
+          })
+
+  -
+    if (typeof (props) === 'undefined') {
+      var props = {};
+    }
+    var allMods = '';
+    if (typeof (props.mods) !== 'undefined' && props.mods) {
+      var modsList = props.mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' field-text--' + modsList[i].trim();
+      }
+    }
+
+  span.field-text__wrap
+    if(typeof (props.label) !== 'undefined' && props.label)
+      label.field-text__label&attributes(props.label)!= props.label.title
+    if(typeof (props.isTextarea) !== 'undefined' && props.isTextarea)
+      textarea.field-text__input&attributes(props.input)!= props.input.value
+    else
+      input.field-text__input(type=(typeof (props.input.type) !== 'undefined' && props.input.type) ? props.input.type : 'text')&attributes(props.input)
+    if(typeof (props.helpText) !== 'undefined' && props.helpText)
+      span.field-text__help-text(class=props.helpText.mods)!= props.helpText.title

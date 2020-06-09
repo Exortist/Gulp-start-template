@@ -1,0 +1,20 @@
+doctype html
+include ../mixins
+html(lang='ru')
+    head
+        title TITLE
+        link( rel="stylesheet" href="static/css/style.css" )
+        script( src="static/js/vendor.js" )
+        script( src="static/js/bundle.js" )
+    body
+        .container
+            block header
+                p Шапка
+            main
+                block content
+                    p Контент
+            block footer
+                p Подвал
+
+
+

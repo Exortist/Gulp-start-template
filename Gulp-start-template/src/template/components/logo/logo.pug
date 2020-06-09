@@ -1,0 +1,23 @@
+//- Все примеси в этом файле должны начинаться c имени блока (logo)
+
+mixin logo(href, mods)
+
+  //- Принимает:
+  //-   href    {string} - Сслка логотипа
+  //-   mods    {string} - список модификаторов
+  //- Вызов:
+        +logo('Текст', 'some-mod')
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' logo--' + modsList[i].trim();
+      }
+    }
+
+  .logo(class=allMods href!=href)&attributes(attributes)
+    a.logo__link
+      block

@@ -12,40 +12,4 @@
 .menu {
 
   $block-name: &; // #{$block-name}__element
-
-  border-top: 2px solid #c4c4c4;
-
-  &__list {
-    display: flex;
-    justify-content: center;
-
-    &-item {
-      width: 300px;
-
-      &:first-child {
-        border-left: 1px solid #c4c4c4;
-      }
-
-      &:last-child {
-        border-right: 1px solid #c4c4c4;
-      }
-    }
-
-    &-link {
-      display: block;
-      padding: rem(34px) rem(10px) rem(38px);
-      font-size: rem(24px);
-      line-height: rem(28px);
-      color: #888;
-      border-left: 1px solid #c4c4c4;
-      border-right: 1px solid #c4c4c4;
-      transition: all 0.3s;
-
-      &--active,
-      &:hover {
-        color: #fff;
-        background-color: $black;
-      }
-    }
-  }
 }
